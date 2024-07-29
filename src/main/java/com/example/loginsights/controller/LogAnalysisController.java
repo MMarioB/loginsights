@@ -4,6 +4,7 @@ import com.example.loginsights.service.LogProcessingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,8 +19,8 @@ public class LogAnalysisController {
     }
 
     @PostMapping("/process")
-    public String processLogs() {
-        logProcessingService.processLogs();
-        return "Procesamiento de logs iniciado";
+    public String processLogs(@RequestParam String logFilePath) {
+        logProcessingService.processLogs(logFilePath);
+        return "Procesamiento de logs completado";
     }
 }
